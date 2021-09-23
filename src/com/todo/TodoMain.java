@@ -11,11 +11,17 @@ public class TodoMain {
 	public static void start() {
 	
 		Scanner sc = new Scanner(System.in);
-		TodoList l = new TodoList();
+		TodoList l = new TodoList(); //todolist class 의 객체 생성//자동 - list 객체만들어짐 
 		boolean isList = false;
 		boolean quit = false;
+		
+		Menu.displaymenu();//메뉴를 화면에 뿌려줌 
+		TodoUtil.loadList( l, "todolist.txt");
+		
 		do {
-			Menu.displaymenu();
+			//Menu.displaymenu();
+			
+			Menu.prompt();
 			isList = false;
 			String choice = sc.next();
 			switch (choice) {
@@ -38,18 +44,25 @@ public class TodoMain {
 
 			case "ls_name_asc":
 				l.sortByName();
+				System.out.println("제목순으로 정렬되었습니다.");
 				isList = true;
 				break;
 
 			case "ls_name_desc":
-				l.sortByName();
+				l.sortByName(); //todolist class -불려 
+				System.out.println("제목역순으로 정렬되었습니다.");
 				l.reverseList();
 				isList = true;
 				break;
 				
 			case "ls_date":
 				l.sortByDate();
+				System.out.println("날짜순으로 정렬되었습니다.");
 				isList = true;
+				break;
+				
+			case "help":
+				Menu.displaymenu();
 				break;
 
 			case "exit":
@@ -57,11 +70,15 @@ public class TodoMain {
 				break;
 
 			default:
-				System.out.println("please enter one of the above mentioned command");
+				System.out.println("잘못입력하셨습니다. 정확한 명령어를 입력해주세요. (도움말이 필요할시 help 입력)");
 				break;
 			}
 			
-			if(isList) l.listAll();
-		} while (!quit);
+			if(isList) TodoUtil.listAll(l); //한번에 3개 처
+			//	l.listAll(); //after sort -> show  
+		} while (!quit);  //false가 되기전까지 
+		
+		TodoUtil.saveList( l, "todolist.txt");
+
 	}
 }
