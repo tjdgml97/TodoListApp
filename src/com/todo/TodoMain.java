@@ -64,7 +64,19 @@ public class TodoMain {
 			case "help":
 				Menu.displaymenu();
 				break;
-
+				
+			case "find":
+				//sc.nextLine();
+				String key = sc.nextLine().trim();
+		
+				TodoUtil.findList(l,key);
+				break;
+			case "find_cate" :
+				
+				String s = sc.nextLine().trim();
+				TodoUtil.findcate(l,s);
+				break;
+			
 			case "exit":
 				quit = true;
 				break;
