@@ -1,9 +1,19 @@
 package com.todo.dao;
 
+import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.todo.service.DbConnect;
+
 public class TodoItem {
+	Connection conn;
+	
+	/*
+	public TodoItem() {
+		this.conn = DbConnect.getConnection();
+	}
+	*/
 	
     private String title;
     private String desc;
@@ -13,6 +23,7 @@ public class TodoItem {
     private SimpleDateFormat x ;
     private String  category;
     private String due_date;
+    private int Id;
     
    //private Date current_date;
     
@@ -43,6 +54,10 @@ public class TodoItem {
         this.due_date = due_date;
         //this.current_date=new Date();
     }
+    public TodoItem(String category){
+    	this.category = category;
+    }
+
     
     public String getTitle() {
         return title;
@@ -96,7 +111,19 @@ public class TodoItem {
 	public String toString() {
 		return "["+category+"] "+title+" - " +desc +" - "+"마감:"+due_date+" - "+current_date;
 	}
-    
+
+
+	public int getId() {
+		return Id;
+	}
+
+
+	public void setId(int id) {
+		Id = id;
+	}
+
+
+
 	
     
 }

@@ -9,11 +9,14 @@ public class Menu {
         System.out.println("2.del >> 항목삭제");
         System.out.println("3.edit >> 항목수정 ");
         System.out.println("4.ls >> 전체목록 ");
-        System.out.println("5.ls_name_asc >> 제목순으로 정렬 ");
+        System.out.println("5.ls_name >> 제목순으로 정렬 ");
         System.out.println("6.ls_name_desc >> 제목역순으로 정렬 ");
         System.out.println("7.ls_date >> 날짜순으로 정렬 ");
-        System.out.println("8.find >> 키워드 찾기 ");
-        System.out.println("9.find_cate >> 키워드로 카테고리  찾기 ");
+        System.out.println("8.ls_date_desc >> 날짜순으로 정렬 ");
+        System.out.println("9.find >> 키워드 찾기 ");
+        System.out.println("10.find_cate >> 키워드로 카테고리  찾기 ");
+        System.out.println("11.ls_cate >> 카테고리 출력  ");
+
        // System.out.println("10.ls_cate >> 카테고 찾기 ");
 
         System.out.println("10.exit >> 종료 ");
