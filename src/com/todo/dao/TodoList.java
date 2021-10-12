@@ -199,14 +199,14 @@ public class TodoList {
 		return count ;
 	}
 	public int deleteItem(int index) {
-		String sql = "delete from list where id?;";
+		String sql = "delete from list where id = ?;";
 		PreparedStatement pstmt;
 		int count = 0;
 		try {
 			pstmt= conn.prepareStatement(sql);
 			pstmt.setInt(1, index);
 			count = pstmt.executeUpdate();
-			pstmt.close();
+							pstmt.close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -305,144 +305,27 @@ public class TodoList {
 			
 		}
 		
-		/*
-		
-		public boolean isDuplicate(String title){
+		public Boolean isDuplicate(String title) {
 			
-			/*
-			public int getCount() {
-				Statement stmt;
-				int count = 0;
-				try {
-					stmt = conn.createStatement() ;
-					String sql = "SELECT count(id) FROM list;";
-					ResultSet rs = stmt.executeQuery(sql);
-					rs.next();
-					count = rs.getInt("count(id)");
-					stmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				return count;
-			}
-			
-			
-			
-			
-			String sql = "SELECT * FROM list WHERE title like ? or memo like ?";
-			
-		*/
-			
-			
-		
-				
-			//title = "%"+title+"%";
-
-			
-			// 카테고리에 - ls_cate. find_cate ->참고하기 
-		
-				
-				
-		
-					
-					
-				/*
-			
-			PreparedStatement pstmt;
-			keyword = "%"+keyword+"%";
+			Statement stmt;
 
 			int count = 0;
 			try {
-			pstmt = conn.createStatement() ;
-			String sql = "SELECT count(*) FROM LIST WHERE title like ?";
-			pstmt.setString(1,keyword);
-			pstmt.setString(2,keyword);
-			ResultSet rs = pstmt.executeQuery(sql);
-			rs.next();
-			count = rs.getInt("count(title)");
-			stmt.close();
+				title = "%"+title+"%"	;			
+				String sql = "select count(title) from list where title = title ;";
+				stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				rs.next();
+				count = rs.getInt("count(title)");
+				stmt.close();
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
-			if (count>=1) return true;
-			else return false;
-			
-		
+			if(count > 0) 
+			 return true;
+			 return false;
 		}
-		
-		*/
-		
-
 }
-
-
-/*
-public class TodoList {
-	private List<TodoItem> list;
-
-
-	public TodoList() {
-		this.list = new ArrayList<TodoItem>();
-	}
-
-	public void addItem(TodoItem t) {
-		list.add(t);
-	}
-
-	public void deleteItem(TodoItem t) {
-		list.remove(t);
-	}
-
-	void editItem(TodoItem t, TodoItem updated) {
-		int index = list.indexOf(t);
-		list.remove(index);
-		list.add(updated);
-	}
-
-	public ArrayList<TodoItem> getList() {
-		return new ArrayList<TodoItem>(list);
 		
-	}
-
-	public void sortByName() {
-		Collections.sort(list, new TodoSortByName());
-
-	}
-	
-	//util 에 대신 구현 
-	/*
-	list 에 있는 item 다 show 
-	public void listAll() {
-		System.out.println("\n"
-				+ "inside list_All method\n");
-		for (TodoItem myitem : list) {
-			System.out.println(myitem.getTitle() + myitem.getDesc());
-		}
-	}
-	*/
-	/*
-	public void reverseList() {
-		Collections.reverse(list);
-	}
-
-	public void sortByDate() {
-		Collections.sort(list, new TodoSortByDate());
-	}
-
-	public int indexOf(TodoItem t) {
-		return list.indexOf(t);
-	}
-
-	//list: todoitem 을 arraylist로 만든
-	public Boolean isDuplicate(String title) {
-		for (TodoItem item : list) {
-			//중복된 제목 방지  
-			if (title.equals(item.getTitle())) return true;
-		}
-		return false;
-	}
-	
-}
-
-*/
+		

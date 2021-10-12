@@ -96,10 +96,10 @@ public class TodoMain {
 				break;
 			}
 			
-			if(isList) TodoUtil.listAll(l); //한번에 3개 처
+		//	if(isList) TodoUtil.listAll(l); //한번에 3개 처
 			//	l.listAll(); //after sort -> show  
 		} while (!quit);  //false가 되기전까지 
-		
+		sc.close();
 		//TodoUtil.saveList( l, "todolist.txt");
 
 	}

@@ -7,7 +7,7 @@ import java.util.Date;
 import com.todo.service.DbConnect;
 
 public class TodoItem {
-	Connection conn;
+	//Connection conn;
 	
 	/*
 	public TodoItem() {
@@ -109,7 +109,7 @@ public class TodoItem {
 
 	@Override
 	public String toString() {
-		return "["+category+"] "+title+" - " +desc +" - "+"마감:"+due_date+" - "+current_date;
+		return Id+" "+"["+category+"] "+title+" - " +desc +" - "+"마감:"+due_date+" - "+current_date;
 	}
 
 

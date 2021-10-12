@@ -15,11 +15,12 @@ import com.todo.dao.TodoList;
 public class TodoUtil {
 		
 		//다른곳에서 db사용
-		Connection conn;
-		
+		//Connection conn;
+		/*
 		public TodoUtil() {
 			this.conn = DbConnect.getConnection();
 		}
+		*/
 	
 	//+
 	@SuppressWarnings("resource")
@@ -44,12 +45,12 @@ public class TodoUtil {
 		}
 		*/
 		sc.nextLine();
-		/*
-		if (list.isDuplicate(title)) {
+		
+		if (l.isDuplicate(title)) {
 			System.out.println("제목이 중복됩니다.");
 			return;
 		}
-		*/
+		
 		
 		System.out.print("내용 > ");
 		desc = sc.nextLine();  
@@ -65,7 +66,7 @@ public class TodoUtil {
 	}
 	
 
-	@SuppressWarnings("resource")
+	//@SuppressWarnings("resource")
 	public static void deleteItem(TodoList l) {
 		
 		Scanner sc = new Scanner(System.in);
@@ -93,7 +94,7 @@ public class TodoUtil {
 	
 
 
-	@SuppressWarnings("resource")
+	//@SuppressWarnings("resource")
 	public static void updateItem(TodoList l) {
 		
 		Scanner sc = new Scanner(System.in);
@@ -125,10 +126,10 @@ public class TodoUtil {
 				//.trim();
 		sc.nextLine();
 
-//		if (l.isDuplicate(new_title)) {
-//			System.out.println("제목이 중복됩니다. ");
-//			return;
-//		}
+	if (l.isDuplicate(new_title)) {
+			System.out.println("제목이 중복됩니다. ");
+			return;
+		}
 		
 		System.out.print("새로운 내용을 입력하세요 > ");
 		String new_description = sc.nextLine();  
@@ -279,19 +280,12 @@ public class TodoUtil {
 		for(TodoItem item : l.getList(s)) {
 			System.out.println(item.toString());
 			count++;
-			//System.out.println("'"+item.getTitle()+" '");
-//			if(item.getTitle().contains(s)||item.getDesc().contains(s) )
-//			{
-//				System.out.print(l.indexOf(item)+1+". ");
-//				System.out.println(item.toString());
-//				count++;
+			//System.out.println("'"+item.g
 			}
 		
 		
 		System.out.println("총 "+count+"개의 항목을 찾았습니다.");
 		//////   
-		
-        //index = myList.indexOf(d);
 	}
 
 
