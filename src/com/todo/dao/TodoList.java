@@ -629,7 +629,7 @@ public class TodoList {
 		Statement stmt;
 		try {
 			stmt = conn.createStatement();
-			String sql = "SELECT * FROM list WHERE is_completed like 1";
+			String sql = "SELECT * FROM list WHERE is_complete like 1";
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				int id = rs.getInt("id");

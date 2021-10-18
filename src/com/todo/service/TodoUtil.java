@@ -108,7 +108,8 @@ public class TodoUtil {
 	public static void updateItem(TodoList l) {
 		
 		Scanner sc = new Scanner(System.in);
-		
+		String current_date= null ;
+		int is_completed =0;
 		//System.out.print("[항목을 수정합니다]\n수정할 제목을 입력하세요 > ");
 		System.out.print("[항목을 수정합니다]\n수정할 번호를 입력하세요 > ");
 
@@ -165,8 +166,9 @@ public class TodoUtil {
 		
 		
 
-		TodoItem t = new TodoItem(priority,with,new_category, new_title,new_description,new_due_date);
+		TodoItem t = new TodoItem(is_completed,priority,with,new_category, new_title,new_description,new_due_date,current_date);
 		t.setId(index);
+		t.setCurrent_date(t.getCurrent_date());
 		if(l.updateItem(t)>0) 
 			System.out.println("수정되었습니다! ");
 
@@ -434,13 +436,14 @@ public class TodoUtil {
 		
 		
 		
-		int count = 4;
+		int count = 0;
 		for(TodoItem item : l.getList(num)) {
 			System.out.println(item.toString());
 			count++;
 		}
 		System.out.println("총 " + count + "개의 항목이 완료되었습니다.!");
 	}
+	
 	
 	
 	
