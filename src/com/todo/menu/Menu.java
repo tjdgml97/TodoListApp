@@ -1,4 +1,7 @@
 package com.todo.menu;
+
+import com.todo.service.TodoUtil;
+
 public class Menu {
 
     public static void displaymenu()
@@ -16,10 +19,16 @@ public class Menu {
         System.out.println("9.find >> 키워드 찾기 ");
         System.out.println("10.find_cate >> 키워드로 카테고리  찾기 ");
         System.out.println("11.ls_cate >> 카테고리 출력  ");
+        System.out.println("12.show_D-day >> D-7 일정 확인  ");
+       // System.out.println("13.list_D-day >> D-day 항목 출력  ");
+        System.out.println("13.comp>> 항목 완료체크  ");
+        System.out.println("14.ls_comp>>완료한 항목 정렬 ");
+
+
 
        // System.out.println("10.ls_cate >> 카테고 찾기 ");
 
-        System.out.println("10.exit >> 종료 ");
+        System.out.println("14.exit >> 종료 ");
       
     }
     public static void prompt()

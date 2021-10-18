@@ -26,7 +26,8 @@ public class TodoUtil {
 	@SuppressWarnings("resource")
 	public static void createItem(TodoList l) {
 		
-		String title, desc,category,due_date;
+		String title, desc,category,due_date,with;
+		String priority;
 		Scanner sc = new Scanner(System.in);
 		
 		/*System.out.println("\n"
@@ -55,12 +56,21 @@ public class TodoUtil {
 		System.out.print("내용 > ");
 		desc = sc.nextLine();  
 		//sc.nextLine();
+		//sc.nextLine();
+
+		
 		System.out.print("마감일자 > ");
-		due_date = sc.nextLine().trim();
+		due_date = sc.next();
+		
+		System.out.print("중요도  > ");
+		priority = sc.next();
+
+		
+		System.out.print("팀원이름 > ");
+		with = sc.next();
 		
 		
-		
-		TodoItem t = new TodoItem(category,title, desc, due_date);
+		TodoItem t = new TodoItem(priority,with,category,title, desc, due_date);
 		if(l.addItem(t)>0)
 		System.out.println("추가되었습니다.");
 	}
@@ -142,8 +152,20 @@ public class TodoUtil {
 		System.out.print("새로운 마감일를 입력하세요 > ");
 		String new_due_date = sc.next().trim();
 		
+
+		System.out.print("중요도  > ");
+		String priority = sc.next();
+
 		
-		TodoItem t = new TodoItem(new_category, new_title,new_description, new_due_date);
+		System.out.print("팀원이름 > ");
+		String with = sc.next();
+		
+		
+	
+		
+		
+
+		TodoItem t = new TodoItem(priority,with,new_category, new_title,new_description,new_due_date);
 		t.setId(index);
 		if(l.updateItem(t)>0) 
 			System.out.println("수정되었습니다! ");
@@ -173,6 +195,8 @@ public class TodoUtil {
 		}
 		//System.out.println("전체목록은 총 "+count+"입니다.");
 	}
+	
+	
 			
 			
 // 정렬을 위한것 
@@ -372,6 +396,53 @@ public class TodoUtil {
 		}
 		System.out.printf("\n총 %d개의 카테고리 등록되어 있습니다.\n",count);
 	}
+	
+	
+	public static void dday(TodoList l) {
+		System.out.println("d-day를 추가할 번호를 입력하세요 >> ");
+		Scanner sc = new Scanner(System.in);
+		
+		int i = sc.nextInt();
+		int count = l.add_dday(i) ; 
+		if(count > 0 ) System.out.println("d-day추가가 완료되었습니다.");
+		
+		
+		
+	}
+	
+	public static void dday_list (TodoList l) { 
+		
+		System.out.printf("[** D-7 전체목록 ** ]");
+
+		
+	
+		int count = 0;
+		for( TodoItem item: l.d_getList()) {
+			System.out.println(item.totoString());
+			count++;
+		}
+		System.out.printf("\n총 %d개의 항목을 찾았습니다.\n",count);
+	}
+	
+	public static void completeItem(TodoList l, int num) {
+		if(l.completeItem(num) > 0)
+			System.out.println("완료 체크하였습니다.");
+	}
+	
+	
+	public static void listAll(TodoList l, int num) {
+		
+		
+		
+		int count = 4;
+		for(TodoItem item : l.getList(num)) {
+			System.out.println(item.toString());
+			count++;
+		}
+		System.out.println("총 " + count + "개의 항목이 완료되었습니다.!");
+	}
+	
+	
 	
 }
 	

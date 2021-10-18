@@ -12,13 +12,13 @@ public class TodoMain {
 	
 		Scanner sc = new Scanner(System.in);
 		TodoList l = new TodoList(); //todolist class 의 객체 생성//자동 - list 객체만들어짐 
-		l.importData("todolist.txt");
+		//l.importData("todolist.txt");
 		
 		boolean isList = false;
 		boolean quit = false;
 		
 		Menu.displaymenu();//메뉴를 화면에 뿌려줌 
-	//	TodoUtil.loadList( l, "todolist.txt");
+	//  TodoUtil.loadList( l, "todolist.txt");
 		
 		do {
 			//Menu.displaymenu();
@@ -86,7 +86,26 @@ public class TodoMain {
 			case "ls_cate":
 				TodoUtil.listCateAll(l);
 				break;
-			
+				
+			case "show_D-day":
+				TodoUtil.dday(l);
+				break;
+				
+			case "comp":
+				
+				int num = sc.nextInt();
+				TodoUtil.completeItem(l,num);
+				break;
+				
+			case "ls_comp":
+				//num = sc.nextInt();
+				TodoUtil.listAll(l,1);
+				break;
+				
+			case "list_D-day":
+				TodoUtil.dday_list (l);
+				break;
+				
 			case "exit":
 				quit = true;
 				break;
